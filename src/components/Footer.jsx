@@ -18,7 +18,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-center text-xs text-gray-400">
-          EMBRYOGEN © 2026. Biology-First IVF Decision Support.
+          
         </p>
       </div>
     </footer>

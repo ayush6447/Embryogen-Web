@@ -21,7 +21,7 @@ export default function CTA() {
             Join the future of reproductive medicine. Let Embryogen empower your clinic.
           </p>
           <motion.a
-            href="mailto:contact@embryogen.ai"
+            href="mailto:akr6447@gmail.com"
             className="inline-flex items-center gap-2 px-8 py-4 text-base font-bold text-[#08060d] dark:text-white bg-white dark:bg-[#08060d] rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-all duration-300 relative z-10"
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
