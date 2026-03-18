@@ -5,18 +5,18 @@ import { LuLayers, LuDna, LuFocus } from 'react-icons/lu';
 const solutions = [
   {
     icon: <LuLayers className="text-xl" />,
-    title: '2.5D Temporal Modeling',
-    description: 'Captures growth dynamics by fusing multiple time-offset frames, enabling the model to observe development over time rather than from a single snapshot.',
+    title: 'Automated Tracking',
+    description: 'Tracks embryo development automatically, monitoring growth continuous timeline analysis.',
   },
   {
     icon: <LuDna className="text-xl" />,
-    title: 'Biological Rule Engine',
-    description: 'Uses clinical constraints to prevent AI hallucinations and ensure safety, translating raw outputs into clinically meaningful and verifiable insights.',
+    title: 'Biological Event Detection',
+    description: 'Detects critical biological events (e.g. PN, cavity formation) to prevent bias and increase accuracy.',
   },
   {
     icon: <LuFocus className="text-xl" />,
-    title: 'Multi-Plane Intelligence',
-    description: 'Processes depth-aware features to mimic an embryologist\'s focus adjustments, analysing embryos across multiple focal planes simultaneously.',
+    title: 'Insightful Timelines',
+    description: 'Provides clear developmental timelines and reduced human-bias insights for better selection.',
   },
 ];
 

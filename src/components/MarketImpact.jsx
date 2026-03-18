@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const stats = [
-  { value: '300K+', label: 'IVF Cycles Annually', desc: 'India performs over 300,000 IVF cycles annually with strong projected growth.' },
-  { value: 'SaaS', label: 'Scalable Deployment', desc: 'High-potential market for AI-based software via SaaS deployment for IVF clinics and hospital chains.' },
-  { value: 'Impact', label: 'Clinical Outcomes', desc: 'Improved selection accuracy reduces emotional and financial burden on patients.' },
+  { value: '₹5,000Cr+', label: 'IVF Market Size (India)', desc: 'Strong growth projected at 15–20% CAGR annually.' },
+  { value: '3,000+', label: 'IVF Clinics', desc: 'A large, addressable network of potential clinic partners.' },
+  { value: 'Low AI Use', label: 'Market Insight', desc: 'Most clinics currently do not use advanced AI solutions.' },
 ];
 
 export default function MarketImpact() {

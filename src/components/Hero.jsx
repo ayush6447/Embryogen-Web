@@ -46,9 +46,7 @@ export default function Hero() {
         </p>
 
         <p className="text-gray-500 dark:text-gray-400 text-base md:text-lg mb-10 leading-relaxed font-normal max-w-[600px] mx-auto">
-          An AI system that supports embryologists by analysing time-lapse embryo development.
-          Using deep learning, it detects key biological milestones like cell division and cavity
-          formation to provide a stable, explainable assessment of embryo viability.
+          AI-powered system that analyzes time-lapse embryo development to detect key biological milestones and provide reliable, explainable viability insights.
         </p>
 
         <motion.a href="#cta" className="btn-primary text-base" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>

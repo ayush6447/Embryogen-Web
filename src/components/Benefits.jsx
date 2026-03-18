@@ -5,18 +5,18 @@ import { HiOutlineExclamationCircle, HiOutlineEye, HiOutlineUserGroup } from 're
 const problems = [
   {
     icon: <HiOutlineUserGroup className="text-xl" />,
-    title: 'Subjective Manual Selection',
-    description: 'Manual embryo selection varies between experts and is prone to human error, leading to inconsistent clinical outcomes.',
-  },
-  {
-    icon: <HiOutlineEye className="text-xl" />,
-    title: 'Static Image Limitations',
-    description: 'Traditional tools rely on single images and miss critical growth patterns that unfold over time during embryo development.',
+    title: 'Manual & Subjective Selection',
+    description: 'Embryo selection relies heavily on doctor experience, making it subjective and prone to human error.',
   },
   {
     icon: <HiOutlineExclamationCircle className="text-xl" />,
-    title: 'Black-Box AI',
-    description: 'Existing AI systems often act as a "black box," making it difficult for clinicians to trust or verify predictions.',
+    title: 'Failed IVF Cycles Impact',
+    description: 'Selection errors lead to failed cycles, causing severe emotional and financial impact on patients.',
+  },
+  {
+    icon: <HiOutlineEye className="text-xl" />,
+    title: 'Static View Limitations',
+    description: 'Existing methods rely on single snapshot images, missing critical developmental time-series data.',
   },
 ];
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, Color } from 'ogl';
+import { useInView } from 'react-intersection-observer';
 
 const vertexShader = `
 attribute vec2 position;
@@ -119,6 +120,13 @@ void main() {
 `;
 
 export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseInteraction = false, ...rest }) {
+  const { ref: inViewRef, inView } = useInView({ threshold: 0.05 });
+  const inViewRefState = useRef(inView);
+  
+  useEffect(() => {
+    inViewRefState.current = inView;
+  }, [inView]);
+
   const colorRef = useRef(color);
   colorRef.current = color;
 
@@ -195,6 +203,10 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
     }
 
     function update(t) {
+      if (!inViewRefState.current) {
+        animationFrameId.current = requestAnimationFrame(update);
+        return;
+      }
       // Update color dynamically so remount isn't needed
       program.uniforms.uColor.value.r = colorRef.current[0];
       program.uniforms.uColor.value.g = colorRef.current[1];
@@ -228,5 +240,14 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
     };
   }, [amplitude, distance, enableMouseInteraction]);
 
-  return <div ref={containerRef} className="w-full h-full relative" {...rest} />;
+  return (
+    <div 
+      ref={(node) => {
+        containerRef.current = node;
+        inViewRef(node);
+      }} 
+      className="w-full h-full relative" 
+      {...rest} 
+    />
+  );
 }
