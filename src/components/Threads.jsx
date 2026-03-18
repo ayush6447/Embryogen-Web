@@ -119,6 +119,9 @@ void main() {
 `;
 
 export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseInteraction = false, ...rest }) {
+  const colorRef = useRef(color);
+  colorRef.current = color;
+
   const containerRef = useRef(null);
   const animationFrameId = useRef();
 
@@ -155,7 +158,7 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
         iResolution: {
           value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },
-        uColor: { value: new Color(...color) },
+        uColor: { value: new Color(...colorRef.current) },
         uAmplitude: { value: amplitude },
         uDistance: { value: distance },
         uMouse: { value: new Float32Array([0.5, 0.5]) },
@@ -193,9 +196,9 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
 
     function update(t) {
       // Update color dynamically so remount isn't needed
-      program.uniforms.uColor.value.r = color[0];
-      program.uniforms.uColor.value.g = color[1];
-      program.uniforms.uColor.value.b = color[2];
+      program.uniforms.uColor.value.r = colorRef.current[0];
+      program.uniforms.uColor.value.g = colorRef.current[1];
+      program.uniforms.uColor.value.b = colorRef.current[2];
 
       if (enableMouseInteraction) {
         const smoothing = 0.05;
