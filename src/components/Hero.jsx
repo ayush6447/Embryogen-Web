@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#0a0a0a]" id="hero">
       {/* Threads Background — color reacts to theme */}
-      <div className="absolute inset-0 z-0 pointer-events-auto" key={isDark ? 'dark' : 'light'}>
+      <div className="absolute inset-0 z-0 pointer-events-auto">
         <Threads
           color={isDark ? [1, 1, 1] : [0, 0, 0]}
           amplitude={1}

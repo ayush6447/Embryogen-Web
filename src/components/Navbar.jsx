@@ -22,8 +22,12 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 px-6 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800' : ''}`}>
       <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[72px]">
-        <a href="#" className="font-heading text-[1.2rem] font-extrabold tracking-tight text-[#08060d] dark:text-white">
-          EMBRYOGEN
+        <a href="#" className="flex items-center">
+          <img
+            src="/header-brand.jpeg"
+            alt="Embryogen"
+            className="h-[32px] dark:invert"
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
