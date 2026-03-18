@@ -126,8 +126,21 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
     if (!containerRef.current) return;
     const container = containerRef.current;
 
-    const renderer = new Renderer({ alpha: true });
-    const gl = renderer.gl;
+    let renderer;
+    let gl;
+    try {
+      renderer = new Renderer({ alpha: true });
+      gl = renderer.gl;
+    } catch (e) {
+      console.warn('Threads: WebGL context unavailable, skipping render.', e);
+      return;
+    }
+
+    if (!gl) {
+      console.warn('Threads: WebGL context is null, skipping render.');
+      return;
+    }
+
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -179,6 +192,11 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
     }
 
     function update(t) {
+      // Update color dynamically so remount isn't needed
+      program.uniforms.uColor.value.r = color[0];
+      program.uniforms.uColor.value.g = color[1];
+      program.uniforms.uColor.value.b = color[2];
+
       if (enableMouseInteraction) {
         const smoothing = 0.05;
         currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
@@ -205,7 +223,7 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
       if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [color, amplitude, distance, enableMouseInteraction]);
+  }, [amplitude, distance, enableMouseInteraction]);
 
   return <div ref={containerRef} className="w-full h-full relative" {...rest} />;
 }
