@@ -237,21 +237,41 @@ export const team = {
   badge: 'OUR TEAM',
   heading: 'The People Behind Embryogen',
   subtext: 'A small team of engineers and researchers building explainable AI for the IVF lab.',
-  // TODO: replace every role: 'TODO' with the real role and fill in the LinkedIn URLs.
-  // An empty linkedin string just hides that card's hover overlay, so blanks are safe
-  // to leave in the meantime. Order here is the order shown on /team.
+  // An empty linkedin string just hides that card's hover overlay.
+  // Order here is the order shown on /team.
   members: [
-    { name: 'Rishav Singh', role: 'TODO', photo: '/team/rishav.webp', linkedin: '' },
-    { name: 'Ayush Kumar Singh', role: 'TODO', photo: '/team/ayush.webp', linkedin: '' },
-    { name: 'Aryan Raj', role: 'TODO', photo: '/team/aryan.webp', linkedin: '' },
-    { name: 'Amrit Arya', role: 'TODO', photo: '/team/amrit.webp', linkedin: '' },
+    {
+      name: 'Rishav Singh',
+      role: 'Full-Stack & QML',
+      photo: '/team/rishav.webp',
+      linkedin: 'https://www.linkedin.com/in/rishav-singh13/',
+    },
+    {
+      name: 'Ayush Kumar Singh',
+      role: 'ML & AI Pipeline',
+      photo: '/team/ayush.webp',
+      linkedin: 'https://www.linkedin.com/in/ayushkumarjsr/',
+    },
+    {
+      name: 'Aryan Raj',
+      role: 'Hardware & IoT',
+      photo: '/team/aryan.webp',
+      linkedin: 'https://www.linkedin.com/in/nikhilaaryan/',
+    },
+    {
+      name: 'Amrit Arya',
+      role: 'Frontend',
+      photo: '/team/amrit.webp',
+      linkedin: 'https://www.linkedin.com/in/amrit-arya/',
+    },
   ],
   mentor: {
     name: 'Ayes Chinmay',
-    // TODO: add Ayes Chinmay's real designation.
-    designation: 'TODO',
+    // Source: his own site, ayeschinmay.com — "Assistant Professor in the department of
+    // Computer Science and Engineering, ITER, Siksha 'O' Anusandhan Deemed to be University".
+    designation: 'Assistant Professor, CSE — SOA University',
     photo: '/team/ayes-chinmay.webp',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/ayeschinmay/',
   },
 };
 
