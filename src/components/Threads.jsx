@@ -128,7 +128,10 @@ export default function Threads({ color = [1, 1, 1], amplitude = 1, distance = 0
   }, [inView]);
 
   const colorRef = useRef(color);
-  colorRef.current = color;
+
+  useEffect(() => {
+    colorRef.current = color;
+  }, [color]);
 
   const containerRef = useRef(null);
   const animationFrameId = useRef();

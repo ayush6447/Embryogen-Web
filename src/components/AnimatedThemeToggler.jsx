@@ -3,7 +3,10 @@ import { Moon, Sun } from 'lucide-react';
 import { flushSync } from 'react-dom';
 
 export default function AnimatedThemeToggler({ duration = 400, className = '', ...props }) {
-  const [isDark, setIsDark] = useState(false);
+  // Seeded from the class the inline script in index.html applied before React booted.
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+  );
   const buttonRef = useRef(null);
 
   useEffect(() => {
@@ -37,10 +40,15 @@ export default function AnimatedThemeToggler({ duration = 400, className = '', .
     );
 
     const applyTheme = () => {
-      const newTheme = !isDark;
-      setIsDark(newTheme);
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+      // Read the live class rather than component state, so the two can never drift.
+      const nextIsDark = !document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', nextIsDark);
+      setIsDark(nextIsDark);
+      try {
+        localStorage.setItem('theme', nextIsDark ? 'dark' : 'light');
+      } catch {
+        /* localStorage blocked (private mode): the choice just will not persist. */
+      }
     };
 
     if (typeof document.startViewTransition !== 'function') {
@@ -70,18 +78,18 @@ export default function AnimatedThemeToggler({ duration = 400, className = '', .
         );
       });
     }
-  }, [isDark, duration]);
+  }, [duration]);
 
   return (
     <button
       type="button"
       ref={buttonRef}
       onClick={toggleTheme}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${className}`}
       {...props}
     >
-      {isDark ? <Sun size={18} /> : <Moon size={18} />}
-      <span className="sr-only">Toggle theme</span>
+      {isDark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
     </button>
   );
 }

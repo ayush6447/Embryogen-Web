@@ -5,9 +5,45 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embryogen — Explainable AI for Embryo Assessment</title>
   <meta name="description"
-    content="EMBRYOGEN — AI-powered embryo intelligence for IVF. Biology-first decision support that transforms embryo selection with deep learning." />
-  <title>Embroygen</title>
+    content="Embryogen analyzes time-lapse embryo development, detects key developmental events, and gives embryologists viability insights they can see and verify." />
+  <link rel="canonical" href="https://www.embryogen.in/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Embryogen" />
+  <meta property="og:url" content="https://www.embryogen.in" />
+  <meta property="og:title" content="Embryogen — Explainable AI for Embryo Assessment" />
+  <meta property="og:description"
+    content="Embryogen analyzes time-lapse embryo development, detects key developmental events, and gives embryologists viability insights they can see and verify." />
+  <!-- TODO: add a real 1200x630 share image at public/og-image.png -->
+  <meta property="og:image" content="https://www.embryogen.in/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Embryogen — Explainable AI for Embryo Assessment" />
+  <meta name="twitter:description"
+    content="Embryogen analyzes time-lapse embryo development, detects key developmental events, and gives embryologists viability insights they can see and verify." />
+  <meta name="twitter:image" content="https://www.embryogen.in/og-image.png" />
+
+  <script>
+    // Apply the saved theme before React paints, so there is no light-mode flash.
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        /* localStorage blocked (private mode): fall through to light. */
+      }
+    })();
+  </script>
+
   <style>
     @font-face {
       font-family: 'Syne';

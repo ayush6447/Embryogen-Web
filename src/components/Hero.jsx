@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import Threads from './Threads';
+import { hero } from '../data/content';
+
+const MotionLink = motion.create(Link);
 
 export default function Hero() {
-  const [isDark, setIsDark] = useState(false);
+  // Seeded from the class the inline script in index.html set before React booted,
+  // so the Threads background never flashes the wrong colour.
+  const [isDark, setIsDark] = useState(
+    () => typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+  );
 
   useEffect(() => {
     const update = () => setIsDark(document.documentElement.classList.contains('dark'));
@@ -15,7 +23,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#0a0a0a]" id="hero">
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#0a0a0a]"
+      id="hero"
+    >
       {/* Threads Background — color reacts to theme */}
       <div className="absolute inset-0 z-0 pointer-events-auto">
         <Threads
@@ -38,27 +49,51 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          EMBRYOGEN
+          {hero.title}
         </motion.h1>
 
         <p className="font-heading text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-300 mb-5">
-          Biology-First IVF Decision Support
+          {hero.subtitle}
         </p>
 
         <p className="text-gray-500 dark:text-gray-400 text-base md:text-lg mb-10 leading-relaxed font-normal max-w-[600px] mx-auto">
-          AI-powered system that analyzes time-lapse embryo development to detect key biological milestones and provide reliable, explainable viability insights.
+          {hero.text}
         </p>
 
-        <motion.a href="#cta" className="btn-primary text-base" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-          Get Started <HiOutlineArrowRight />
-        </motion.a>
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <MotionLink
+            to={hero.primaryCta.href}
+            className="btn-primary text-base"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            {hero.primaryCta.label} <HiOutlineArrowRight aria-hidden="true" />
+          </MotionLink>
+          <MotionLink
+            to={hero.secondaryCta.href}
+            className="btn-secondary text-base"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            {hero.secondaryCta.label}
+          </MotionLink>
+        </div>
       </motion.div>
 
-      <motion.div className="absolute bottom-12 left-0 right-0 flex items-center justify-center gap-8 z-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}>
-        {['Problem', 'Solutions', 'Market', 'Team'].map(link => (
-          <a key={link} href={`#${link.toLowerCase()}`} className="text-sm text-gray-400 hover:text-[#08060d] dark:hover:text-white transition-colors underline underline-offset-4 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-500">
-            {link}
-          </a>
+      <motion.div
+        className="absolute bottom-12 left-0 right-0 flex items-center justify-center gap-6 sm:gap-8 flex-wrap px-6 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+      >
+        {hero.quickLinks.map(link => (
+          <Link
+            key={link.href}
+            to={link.href}
+            className="text-sm text-gray-400 hover:text-[#08060d] dark:hover:text-white transition-colors underline underline-offset-4 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-500"
+          >
+            {link.label}
+          </Link>
         ))}
       </motion.div>
     </section>
