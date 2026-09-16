@@ -280,27 +280,16 @@ export const achievements = {
   heading: 'Milestones & Recognition',
   subtext: 'What the team has built, shipped and been recognised for so far.',
   emptyMessage: 'More coming soon',
-  // TODO: replace all three placeholder entries below with real achievements.
-  // Nothing in this array is real — do not publish the page as-is.
+  // Real achievements only. Add new ones here as they happen.
   // Fields: { title, organization, date (ISO yyyy-mm-dd, used for sorting), description, image?, link? }
   items: [
     {
-      title: 'TODO: achievement title',
-      organization: 'TODO: organization',
-      date: '2026-01-01',
-      description: 'TODO: one or two lines describing what this achievement was.',
-    },
-    {
-      title: 'TODO: achievement title',
-      organization: 'TODO: organization',
-      date: '2025-09-01',
-      description: 'TODO: one or two lines describing what this achievement was.',
-    },
-    {
-      title: 'TODO: achievement title',
-      organization: 'TODO: organization',
-      date: '2025-03-01',
-      description: 'TODO: one or two lines describing what this achievement was.',
+      title: '2nd Place — SOA Ideathon 2026',
+      organization: "ITER, Siksha 'O' Anusandhan",
+      date: '2026-09-05',
+      description:
+        'Placed second in the SOA Ideathon 2026, the university’s internal round for the Smart India Hackathon (SIH).',
+      image: '/achievements/soa-ideathon-2026.webp',
     },
   ],
 };

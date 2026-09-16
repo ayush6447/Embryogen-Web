@@ -55,11 +55,11 @@ export default function Achievements() {
               </p>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {items.map((item, i) => (
                 <motion.article
                   key={`${item.title}-${item.date}`}
-                  className="float-card overflow-hidden flex flex-col"
+                  className="float-card overflow-hidden flex flex-col w-full md:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)]"
                   initial={{ opacity: 0, y: 40 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -69,7 +69,7 @@ export default function Achievements() {
                       src={item.image}
                       alt={item.title}
                       loading="lazy"
-                      className="w-full h-44 object-cover border-b border-gray-100 dark:border-neutral-800"
+                      className="w-full aspect-[4/3] object-cover border-b border-gray-100 dark:border-neutral-800"
                     />
                   )}
                   <div className="p-8 flex flex-col flex-1">
